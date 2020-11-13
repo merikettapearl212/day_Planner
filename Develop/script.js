@@ -37,9 +37,9 @@ $(document).ready(function () {
     // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
     function checkTime() {
         for (var i = 0; i < workingHours.length; i++) {
-        if( workingHours[i] < currentHour ) {
+        if( hourId[i] < currentHour ) {
             timeBlockEl.addClass("past");
-          } else if( workingHours[i] > currentHour ) {
+          } else if( hourId[i] > currentHour ) {
             timeBlockEl.addClass("future");
           } else {
             timeBlockEl.addClass("present");
