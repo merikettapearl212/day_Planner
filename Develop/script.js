@@ -12,16 +12,17 @@ $(document).ready(function () {
     var textareaEl;
     var saveBtnEl;
     var iEl;
+    var textAreaHour = [];
 
     // timeBlock
     var workingHours = ["8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM"];
-
+    var hourId = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
     // CREATE time blocks dynamically from 8AM to 6PM
-
+    function createBlocks() {
         for (var i = 0; i < workingHours.length; i++) {
             timeBlockEl = $("<div>").addClass("row time-block");
             hoursEl = $("<div>").addClass("hour col-1").text(workingHours[i]);
-            textareaEl = $("<textarea>").addClass("description col-10")
+            textareaEl = $("<textarea>").addClass("description col-10").attr("id", hourId[i]);
             saveBtnEl = $("<button>").addClass("saveBtn col-1").attr("id", i + 8)
             iEl = $("<i>").addClass("fas fa-save")
             saveBtnEl.append(iEl);
@@ -29,16 +30,25 @@ $(document).ready(function () {
             containerEl.append(timeBlockEl);
             timeBlockEl.append(hoursEl, textareaEl, saveBtnEl);
 
+            textAreaHour[i] = $("#" + hourId[i]);
             saveBtnEl.on("click", saveToLocalStorage);
         }
-    
+    }
     //make a function that...
     // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
-        for (var i = 0; i < workingHours.length; i++) {
-            if (workingHours[i] < currentHour) {
-                textareaEl.addClass("past")
+    function checkTime() {
+        for (var i = 0; i < hourId.length; i++) {
+            if (hourID[i] < currentHour) {
+                textAreaHour[i].addClass("past")
+            }
+            else if (hourID[i] == currentHour) {
+                textAreaHour[i].addClass("present")
+            }
+            else if (hoursID[i] > currentHour) {
+                textAreaHour[i].addClass("future")
             }
         }
+    }
 
     function saveToLocalStorage() {
         console.log($(this).attr("id"));
@@ -53,7 +63,8 @@ $(document).ready(function () {
     var example = localStorage.getItem("key");
     console.log(example);
     //CALL functions*/
-
+    createBlocks()
+    checkTime()
 
     });
 
