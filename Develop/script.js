@@ -31,21 +31,23 @@ $(document).ready(function () {
             timeBlockEl.append(hoursEl, textareaEl, saveBtnEl);
 
             saveBtnEl.on("click", saveToLocalStorage);
+            checkTime()
         }
     }
     //make a function that...
     // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
     function checkTime() {
-        for (var i = 0; i < workingHours.length; i++) {
+        for (var i = 8; i <= 18; i++) {
         if( workingHours[i] < currentHour ) {
             timeBlockEl.addClass("past");
-          } else if ( workingHours[i] == currentHour ) {
+          } else if ( workingHours[i] === currentHour ) {
             timeBlockEl.addClass("present");
           } else {
             timeBlockEl.addClass("future");
           }  
         }
     }
+    
 
 
     function saveToLocalStorage() {
@@ -62,7 +64,7 @@ $(document).ready(function () {
     console.log(example);
     //CALL functions*/
     createBlocks()
-    checkTime()
+    
 
     });
     
