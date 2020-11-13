@@ -1,34 +1,57 @@
+$(document).ready(function () {
+    //Query selector
+    var containerEl = $(".container");
+    // adding moment js for today date in the header
+    var today = moment();
+    $("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
+    // Get the current hour of the day using moment.js
+    var currentHour = parseInt(today.format("HH"));
 
-// adding moment js for today date in the header
-var today = moment();
-$("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
+    var timeBlockEl;
+    var hoursEl;
+    var textareaEl;
+    var saveBtnEl;
+    var iEl;
 
-// Get the current hour of the day using moment.js
-var currentHour = parseInt(today.format("H"));
+    // timeBlock
+    var workingHours = ["8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM"];
 
-// timeBlock
-var workingHours = ["8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM"];
-//make a function...
-// CREATE time blocks from 8AM to 6PM
+    // CREATE time blocks dynamically from 8AM to 6PM
+    for (var i = 0; i < workingHours.length; i++) {
+        timeBlockEl = $("<div>").addClass("row time-block");
+        hoursEl = $("<div>").addClass("hour col-1").text(workingHours[i]);
+        textareaEl = $("<textarea>").addClass("description col-8")
+        saveBtnEl = $("<button>").addClass("saveBtn col-1").attr("id", i + 8)
+        iEl = $("<i>").addClass("fas fa-save")
+        saveBtnEl.append(iEl);
+    
+        containerEl.append(timeBlockEl);
+        timeBlockEl.append(hoursEl, textareaEl, saveBtnEl);
 
-        //add class + attr //append to html elements
-     
-// ADD save icon
-     
-//make a function that...
-// CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
+        saveBtnEl.on("click", saveToLocalStorage);
+    }
 
-    //grab button id and value and send it to local storage
+    //make a function that...
+    // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
 
-    //call function to save data to local storage
+    function saveToLocalStorage() {
+        console.log($(this).attr("id"));
+        var textarea = $(this).siblings()[1];
+        var task = textarea.value;
 
-//make a funtion...
-//GET and SAVE after btn 'click'
+        //localStorage.setItem(placethekeyinherebased off the id, place the value in here);
+        //grab button id and textarea's value and send it to local storage
+        //call function to save data to local storage
+    }
 
-//CALL function that saves to local storage?
-//RENDER data?
+    var example = localStorage.getItem("key");
+    console.log(example);
 
-//CALL functions
+    //make a funtion...
+    //GET and SAVE after btn 'click'
 
+    //CALL function that saves to local storage?
+    //RENDER data?
 
-
+    //CALL functions*/
+});
