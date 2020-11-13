@@ -17,22 +17,28 @@ $(document).ready(function () {
     var workingHours = ["8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM"];
 
     // CREATE time blocks dynamically from 8AM to 6PM
-    for (var i = 0; i < workingHours.length; i++) {
-        timeBlockEl = $("<div>").addClass("row time-block");
-        hoursEl = $("<div>").addClass("hour col-1").text(workingHours[i]);
-        textareaEl = $("<textarea>").addClass("description col-8")
-        saveBtnEl = $("<button>").addClass("saveBtn col-1").attr("id", i + 8)
-        iEl = $("<i>").addClass("fas fa-save")
-        saveBtnEl.append(iEl);
+
+        for (var i = 0; i < workingHours.length; i++) {
+            timeBlockEl = $("<div>").addClass("row time-block");
+            hoursEl = $("<div>").addClass("hour col-1").text(workingHours[i]);
+            textareaEl = $("<textarea>").addClass("description col-10")
+            saveBtnEl = $("<button>").addClass("saveBtn col-1").attr("id", i + 8)
+            iEl = $("<i>").addClass("fas fa-save")
+            saveBtnEl.append(iEl);
     
-        containerEl.append(timeBlockEl);
-        timeBlockEl.append(hoursEl, textareaEl, saveBtnEl);
+            containerEl.append(timeBlockEl);
+            timeBlockEl.append(hoursEl, textareaEl, saveBtnEl);
 
-        saveBtnEl.on("click", saveToLocalStorage);
-    }
-
+            saveBtnEl.on("click", saveToLocalStorage);
+        }
+    
     //make a function that...
     // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
+        for (var i = 0; i < workingHours.length; i++) {
+            if (workingHours[i] < currentHour) {
+                textareaEl.addClass("past")
+            }
+        }
 
     function saveToLocalStorage() {
         console.log($(this).attr("id"));
@@ -46,6 +52,10 @@ $(document).ready(function () {
 
     var example = localStorage.getItem("key");
     console.log(example);
+    //CALL functions*/
+
+
+    });
 
     //make a funtion...
     //GET and SAVE after btn 'click'
@@ -53,5 +63,5 @@ $(document).ready(function () {
     //CALL function that saves to local storage?
     //RENDER data?
 
-    //CALL functions*/
-});
+    
+    
