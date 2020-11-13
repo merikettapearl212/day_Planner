@@ -12,7 +12,7 @@ $(document).ready(function () {
     var textareaEl;
     var saveBtnEl;
     var iEl;
-    var textAreaHour = [];
+    
 
     // timeBlock
     var workingHours = ["8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM"];
@@ -30,13 +30,12 @@ $(document).ready(function () {
             containerEl.append(timeBlockEl);
             timeBlockEl.append(hoursEl, textareaEl, saveBtnEl);
 
-            textAreaHour[i] = $("#" + hourId[i]);
             saveBtnEl.on("click", saveToLocalStorage);
         }
     }
     //make a function that...
     // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
-    function checkTime() {
+    /*function checkTime() {
         for (var i = 0; i < hourId.length; i++) {
             if (hourID[i] < currentHour) {
                 textAreaHour[i].addClass("past")
@@ -48,7 +47,7 @@ $(document).ready(function () {
                 textAreaHour[i].addClass("future")
             }
         }
-    }
+    }*/
 
     function saveToLocalStorage() {
         console.log($(this).attr("id"));
