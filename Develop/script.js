@@ -39,10 +39,10 @@ $(document).ready(function () {
         for (var i = 0; i < workingHours.length; i++) {
         if( workingHours[i] < currentHour ) {
             timeBlockEl.addClass("past");
-          } else if( workingHours[i] > currentHour ) {
-            timeBlockEl.addClass("future");
-          } else {
+          } else if ( workingHours[i] == currentHour ) {
             timeBlockEl.addClass("present");
+          } else {
+            timeBlockEl.addClass("future");
           }  
         }
     }
@@ -65,6 +65,8 @@ $(document).ready(function () {
     checkTime()
 
     });
+    
+    
 
     //make a funtion...
     //GET and SAVE after btn 'click'
