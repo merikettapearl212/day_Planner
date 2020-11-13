@@ -35,19 +35,18 @@ $(document).ready(function () {
     }
     //make a function that...
     // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
-    /*function checkTime() {
-        for (var i = 0; i < hourId.length; i++) {
-            if (hourID[i] < currentHour) {
-                textAreaHour[i].addClass("past")
-            }
-            else if (hourID[i] == currentHour) {
-                textAreaHour[i].addClass("present")
-            }
-            else if (hoursID[i] > currentHour) {
-                textAreaHour[i].addClass("future")
-            }
+    function checkTime() {
+        for (var i = 0; i < workingHours.length; i++) {
+        if( workingHours[i] < currentHour ) {
+            timeBlockEl.addClass("past");
+          } else if( workingHours[i] > currentHour ) {
+            timeBlockEl.addClass("future");
+          } else {
+            timeBlockEl.addClass("present");
+          }  
         }
-    }*/
+    }
+
 
     function saveToLocalStorage() {
         console.log($(this).attr("id"));
