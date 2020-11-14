@@ -5,7 +5,8 @@ $(document).ready(function () {
     var today = moment();
     $("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
     // Get the current hour of the day using moment.js
-    var currentHour = parseInt(today.format("HH"));
+    var currentHour = moment().format("H");
+    console.log()
 
     var timeBlockEl;
     var hoursEl;
@@ -15,8 +16,8 @@ $(document).ready(function () {
     
 
     // timeBlock
-    var workingHours = ["8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM"];
-    var hourId = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+    var workingHours = ["8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM"];
+    var hourId = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
     // CREATE time blocks dynamically from 8AM to 6PM
     function createBlocks() {
         for (var i = 0; i < workingHours.length; i++) {
@@ -39,9 +40,9 @@ $(document).ready(function () {
     // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
     function checkTime() {
         for (var i = 0; i < workingHours.length; i++) {
-        if(workingHours[i] < currentHour ) {
+        if(hourId[i] < currentHour ) {
             timeBlockEl.addClass("past");
-          } else if (workingHours[i] == currentHour ) {
+          } else if (hourId[i] == currentHour ) {
             timeBlockEl.addClass("present");
           } else {
             timeBlockEl.addClass("future");
