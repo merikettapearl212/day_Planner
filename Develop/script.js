@@ -24,31 +24,31 @@ $(document).ready(function () {
             timeBlockEl = $("<div>").addClass("row time-block");
             hoursEl = $("<div>").addClass("hour col-1").text(workingHours[i]);
             textareaEl = $("<textarea>").addClass("description col-10").attr("id", hourId[i]);
-            saveBtnEl = $("<button>").addClass("saveBtn col-1").attr("id", i + 8)
+            saveBtnEl = $("<button>").addClass("saveBtn col-1").attr("data", i + 8)
             iEl = $("<i>").addClass("fas fa-save")
             saveBtnEl.append(iEl);
     
             containerEl.append(timeBlockEl);
             timeBlockEl.append(hoursEl, textareaEl, saveBtnEl);
 
+            if(hourId[i] < currentHour ) {
+              timeBlockEl.addClass("past");
+            } else if (hourId[i] == currentHour ) {
+              timeBlockEl.addClass("present");
+            } else {
+              timeBlockEl.addClass("future");
+            }  
+          
+
             saveBtnEl.on("click", saveToLocalStorage);
-            checkTime()
+        
             
         }
+        
     }
     //make a function that...
     // CHECK that each timeblock is color coded to indicate whether it is in the past-grey, present-orange, or future-green
-    function checkTime() {
-        for (var i = 0; i < workingHours.length; i++) {
-        if(hourId[i] < currentHour ) {
-            timeBlockEl.addClass("past");
-          } else if (hourId[i] == currentHour ) {
-            timeBlockEl.addClass("present");
-          } else {
-            timeBlockEl.addClass("future");
-          }  
-        }
-    }
+    
     console.log(currentHour)
 
 
