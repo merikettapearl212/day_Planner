@@ -41,14 +41,14 @@ $(document).ready(function () {
         for (var i = 0; i < workingHours.length; i++) {
         if([i] < currentHour ) {
             timeBlockEl.addClass("past");
-          } else if ([i] === currentHour ) {
+          } else if ([i] == currentHour ) {
             timeBlockEl.addClass("present");
-          } else if ([i] > currentHour ){
+          } else {
             timeBlockEl.addClass("future");
           }  
         }
     }
-    
+    console.log(currentHour)
 
 
     function saveToLocalStorage() {
