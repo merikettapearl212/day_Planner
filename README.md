@@ -1,4 +1,5 @@
 ## Day Planner
+A work day application that allows you to save comments/events for each hour of the day. Color coded time for past, present, and future times. 
 
 ## Screenshot of live page:
 ![Screenshot](Assets/day-planner.png)
