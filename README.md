@@ -1,7 +1,7 @@
 ## Day Planner
 
 ## Screenshot of live page:
-![Screenshot]()
+![Screenshot](Assets/day-planner.png)
 
 ## Links:
 To Repo:
