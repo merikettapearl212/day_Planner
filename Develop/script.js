@@ -32,6 +32,7 @@ $(document).ready(function () {
 
             saveBtnEl.on("click", saveToLocalStorage);
             checkTime()
+            
         }
     }
     //make a function that...
@@ -64,6 +65,7 @@ $(document).ready(function () {
     console.log(example);
     //CALL functions*/
     createBlocks()
+    
     
 
     });
